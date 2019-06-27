@@ -50,7 +50,7 @@ function draw() {
   textSize(slider_textSize);
 
   var val_numSquares = slider_numSqaures.value();
-  text("Number of squares", width/40, 30);
+  text("Number of shapes", width/40, 30);
 
   var val_speed = slider_speed.value();
   text("Accelerate", width/40, 65); 
