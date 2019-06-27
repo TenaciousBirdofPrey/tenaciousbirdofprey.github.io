@@ -139,20 +139,20 @@ function draw() {
 
     if (shape ==0) {
       ellipse(cosx(val_freq*i, (height*val_amp), driver+i), siny(val_freq*i, (height*val_amp)+i, driver), height*0.09, height*0.09);
-      ellipse(cosx(val_freq*i, (height*val_amp/2), driver), siny(val_freq*i, (height*val_amp/2)+i, driver), height*0.03, height*0.03);
+      ellipse(cosx(val_freq*i, (-height*val_amp/2), driver), siny(val_freq*i, (-height*val_amp/2)+i, driver), height*0.03, height*0.03);
     }
 
     if (shape == 1) {
 
       rect(cosx(val_freq*i, (height*val_amp), driver), siny(val_freq*i, (height*val_amp)+i, driver), height*0.09, height*0.09);
-      rect(cosx(val_freq*i, (height*val_amp/2), driver), siny(val_freq*i, (height*val_amp/2)+i, driver), height*0.03, height*0.03);
+      rect(cosx(val_freq*i, (-height*val_amp/2), driver), siny(val_freq*i, (-height*val_amp/2)+i, driver), height*0.03, height*0.03);
     }
 
 
  if (shape == 2) {
 
       line(cosx(val_freq*i, (height*val_amp), driver), siny(val_freq*i, (height*val_amp)+i, driver), height*0.09, height*0.09);
-      line(cosx(val_freq*i, (height*val_amp/2), driver), siny(val_freq*i, (height*val_amp/2)+i, driver), height*0.03, height*0.03);
+      line(cosx(val_freq*i, (-height*val_amp/2), driver), siny(val_freq*i, (-height*val_amp/2)+i, driver), height*0.03, height*0.03);
     }
 
 
