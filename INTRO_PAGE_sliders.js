@@ -1,4 +1,8 @@
-
+// image stuff
+let img
+  function preload() {
+  img=loadImage('data/cage_sm.png');
+}
 //dat gui stuff
 var sliders;
 
@@ -9,18 +13,27 @@ var slider_textSize;
 var slider_amp;
 //var shape = 1;
 
+// headline
+var headline ="BRENDAN O'DONNELL";
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
- 
-//dat gui stuff
-sliders = new Slider();
-var gui = new dat.GUI();
-gui.add(sliders,'Total_Shapes',1,200);
-gui.add(sliders,'Speed',1,10);
-gui.add(sliders,'Frequency',0,0.05);
-gui.add(sliders,'Amplitude',0,0.5);
-gui.add(sliders, 'Shape', { Circle: 0, Square: 1, Line: 2 } );
+
+  //dat gui stuff
+  sliders = new Slider();
+  var gui = new dat.GUI();
+  gui.add(sliders, 'Total_Shapes', 1, 200);
+  gui.add(sliders, 'Speed', 1, 10);
+  gui.add(sliders, 'Frequency', 0, 0.05);
+  gui.add(sliders, 'Amplitude', 0, 0.5);
+  gui.add(sliders, 'Shape', { 
+  Circle: 
+  0, Square: 
+  1, Line: 
+  2, CAGE:
+    3,
+  } 
+  );
 
 
   // text spec
@@ -28,7 +41,6 @@ gui.add(sliders, 'Shape', { Circle: 0, Square: 1, Line: 2 } );
 
   //textSize(0);
   textFont('Jura');
-
 }
 
 
@@ -47,46 +59,11 @@ function draw() {
 
 
 
-//  //click to change shape 
-//  //circle
-//  if (  mouseIsPressed &&   dist((width/40)+10, 190, mouseX, mouseY)<10              ) { 
-//    shape =0;
-//  }
-//  if (shape ==0) {
-//    fill(255);
-//  } else {
-//    noFill();
-//  }
-//  ellipse((width/40)+10, 190, 20, 20);
-
-  ////square
-  //if (  mouseIsPressed &&   dist((width/40)+40, 190, mouseX, mouseY)<10              ) { 
-  //  shape =1;
-  //}
-  //if (shape ==1) {
-  //  fill(255);
-  //} else {
-  //  noFill();
-  //}
-  //rect((width/40)+40, 190, 20, 20);
-
-  //// lines
-  //if (  mouseIsPressed &&   dist((width/40)+75, 190, mouseX, mouseY)<15              ) { 
-  //  shape =2;
-  //}
-  //if (shape ==2) {
-  //  fill(255);
-  //} else {
-  //  noFill();
-  //}
- // rect((width/40)+75, 190, 30, 5);
-
-
   textSize(width*0.02);
 
   fill(255, 50);
   textAlign(CENTER);
-  text("BRENDAN O'DONNELL", width/2, 50);
+  text(headline, width/2, 50);
 
 
   noFill();
@@ -115,12 +92,14 @@ function draw() {
     if (sliders.Shape ==0) {
       ellipse(cosx(sliders.Frequency*i, (height*sliders.Amplitude), driver+i), siny(sliders.Frequency*i, (height*sliders.Amplitude)+i, driver), height*0.09, height*0.09);
       ellipse(cosx(sliders.Frequency*i, (-height*sliders.Amplitude/2), driver), siny(sliders.Frequency*i, (-height*sliders.Amplitude/2)+i, driver), height*0.03, height*0.03);
+      headline ="BRENDAN O'DONNELL";
     }
 
     if (sliders.Shape == 1) {
 
       rect(cosx(sliders.Frequency*i, (height*sliders.Amplitude), driver), siny(sliders.Frequency*i, (height*sliders.Amplitude)+i, driver), height*0.09, height*0.09);
       rect(cosx(sliders.Frequency*i, (-height*sliders.Amplitude/2), driver), siny(sliders.Frequency*i, (-height*sliders.Amplitude/2)+i, driver), height*0.03, height*0.03);
+      headline ="BRENDAN O'DONNELL";
     }
 
 
@@ -128,7 +107,17 @@ function draw() {
 
       line(cosx(sliders.Frequency*i, (height*sliders.Amplitude), driver), siny(sliders.Frequency*i, (height*sliders.Amplitude)+i, driver), height*0.09, height*0.09);
       line(cosx(sliders.Frequency*i, (-height*sliders.Amplitude/2), driver), siny(sliders.Frequency*i, (-height*sliders.Amplitude/2)+i, driver), height*0.03, height*0.03);
+      headline ="BRENDAN O'DONNELL";
     }
+    //image(img, 0, 0);
+    if (sliders.Shape == 3) {
+      image(img, cosx(sliders.Frequency*i, (height*sliders.Amplitude), driver+i), siny(sliders.Frequency*i, (height*sliders.Amplitude)+i, driver));
+      image(img,cosx(sliders.Frequency*i, (-height*sliders.Amplitude/2), driver), siny(sliders.Frequency*i, (-height*sliders.Amplitude/2)+i, driver));
+      headline = "CAGE THE NICHOLAS";
+    }
+
+
+
 
 
     pop();
@@ -162,11 +151,10 @@ function siny( freq, amp, driver) {
   return (sin(driver*freq)*amp);
 }
 
-function Slider(){
+function Slider() {
   this.Total_Shapes = 10;
   this.Speed =5;
   this.Frequency = 0.01;
   this.Amplitude = 0.25;
   this.Shape =1;
-
 }
